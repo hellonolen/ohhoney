@@ -5,13 +5,14 @@ import { Search } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const pageLabels: Record<string, string> = {
-  '/dashboard':          'Today',
-  '/dashboard/inbox':   'Inbox',
-  '/dashboard/notes':   'Notes',
-  '/dashboard/tasks':   'Tasks',
-  '/dashboard/calendar':'Calendar',
-  '/dashboard/deals':   'Deals',
-  '/dashboard/graph':   'Graph',
+  '/dashboard':           'Today',
+  '/dashboard/inbox':    'Inbox',
+  '/dashboard/notes':    'Notes',
+  '/dashboard/tasks':    'Tasks',
+  '/dashboard/calendar': 'Calendar',
+  '/dashboard/deals':    'Deals',
+  '/dashboard/graph':    'Graph',
+  '/dashboard/profile':  'Profile',
 };
 
 export default function DashboardTopbar() {

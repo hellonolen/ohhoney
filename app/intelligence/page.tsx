@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 
 const pillars = [
@@ -94,15 +95,11 @@ export default function IntelligencePage() {
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 1, background: 'var(--border)' }}>
           {pillars.map(p => (
-            <Link key={p.id} href={`/dashboard/deals`} style={{
+            <Link key={p.id} href="/dashboard/deals" style={{
               display: 'block',
               background: 'var(--white)', padding: '28px 24px',
               textDecoration: 'none',
-              transition: 'background var(--ease)',
-            }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'var(--off-white)'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'var(--white)'; }}
-            >
+            }}>
               <p style={{ fontFamily: 'var(--font-serif)', fontSize: 15, fontWeight: 300, fontStyle: 'italic', color: 'var(--black)', marginBottom: 10, lineHeight: 1.3 }}>{p.label}</p>
               <p style={{ fontSize: 11, fontWeight: 300, color: 'var(--mid-gray)', lineHeight: 1.6 }}>{p.summary}</p>
             </Link>
@@ -110,7 +107,7 @@ export default function IntelligencePage() {
         </div>
       </section>
 
-      {/* CTA — off-white, no black fill */}
+      {/* CTA */}
       <section style={{ background: 'var(--off-white)', padding: '80px 40px', textAlign: 'center' }}>
         <div style={{ maxWidth: 480, margin: '0 auto' }}>
           <p className="label" style={{ color: 'var(--mid-gray)', marginBottom: 20 }}>Begin with 3 days free</p>
