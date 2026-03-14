@@ -10,6 +10,7 @@ const navItems = [
   { label: 'Calendar',href: '/dashboard/calendar' },
   { label: 'Deals',   href: '/dashboard/deals' },
   { label: 'Graph',   href: '/dashboard/graph' },
+  { label: 'Profile', href: '/dashboard/profile' },
 ];
 
 export default function DashboardSidebar() {
@@ -23,14 +24,13 @@ export default function DashboardSidebar() {
           fontFamily: 'var(--font-serif)',
           fontSize: '18px',
           fontWeight: 400,
-          letterSpacing: '0.06em',
-          textTransform: 'uppercase',
+          letterSpacing: '0.04em',
           color: 'var(--black)',
           display: 'block',
           marginBottom: 4,
         }}>OhHoney</Link>
         <p className="label" style={{ color: 'var(--mid-gray)', fontSize: '9px' }}>
-          Executive Intelligence
+          Intelligence Feels Good
         </p>
       </div>
 

@@ -1,69 +1,84 @@
+import { getPublicDeals, CATEGORIES } from '@/lib/deals';
+import Link from 'next/link';
+
 export default function DealsPage() {
-  const deals = [
-    {
-      category: 'TRAVEL',
-      title: 'Aman Residences, Tokyo',
-      desc: 'Member priority access. Preferred suites, private transport, onsite wellness programming. Rate parity guaranteed.',
-      terms: 'Member rate · $3,200/night',
-      expiry: 'Closes March 31',
-      exclusive: true,
-    },
-    {
-      category: 'FASHION',
-      title: 'Loro Piana — Private Atelier Visit',
-      desc: 'Access to the atelier floor in Milan during fashion week. Bespoke consultation with a senior stylist. One guest permitted.',
-      terms: 'By application · No purchase requirement',
-      expiry: 'Limited — 8 slots',
-      exclusive: true,
-    },
-    {
-      category: 'REAL ESTATE',
-      title: 'Côte d\'Azur — Off-market listing',
-      desc: '4-bedroom villa, Eze-sur-Mer. Asking €7.4M. Pre-market introduction through our network. Commission restructure available.',
-      terms: 'Off-market · Introductory access only',
-      expiry: 'Active',
-      exclusive: false,
-    },
-    {
-      category: 'HEALTH',
-      title: 'Six Senses — Longevity Immersion',
-      desc: 'Seven-day full-program longevity assessment with Dr. Bland. Biomarkers, sleep, stress, and nutrition. September cohort.',
-      terms: 'Member priority · $28,000',
-      expiry: 'Cohort fills March 28',
-      exclusive: false,
-    },
-  ];
+  const deals = getPublicDeals();
 
   return (
-    <div style={{ maxWidth: 900 }}>
-      <div style={{ marginBottom: 48, paddingBottom: 24, borderBottom: '1px solid var(--border)' }}>
-        <p style={{ fontSize: '14px', fontWeight: 300, color: 'var(--fg-secondary)', lineHeight: 1.6, maxWidth: 560 }}>
-          Curated opportunities exclusive to OhHoney members. Each offering is vetted, negotiated, and time-sensitive.
+    <div style={{ maxWidth: 1120 }}>
+      {/* Header */}
+      <div style={{ marginBottom: 48, paddingBottom: 28, borderBottom: '1px solid var(--border)' }}>
+        <p className="label" style={{ color: 'var(--mid-gray)', marginBottom: 12 }}>Member deals</p>
+        <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 28, fontWeight: 300, fontStyle: 'italic', marginBottom: 12 }}>
+          Curated across twelve pillars
+        </h1>
+        <p style={{ fontSize: 13, fontWeight: 300, color: 'var(--dark-gray)', maxWidth: 560 }}>
+          Every deal is vetted, negotiated, and relevant to the women of OhHoney. Exclusive offers are reserved for Pro members.
         </p>
       </div>
 
-      {deals.map((deal, i) => (
-        <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 40, paddingBottom: 40, marginBottom: 40, borderBottom: '1px solid var(--border)', alignItems: 'start' }}>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
-              <p className="label" style={{ fontSize: '9px', color: 'var(--mid-gray)' }}>{deal.category}</p>
-              {deal.exclusive && (
-                <span className="chip chip-filled" style={{ fontSize: '9px', padding: '3px 9px' }}>Member Exclusive</span>
-              )}
+      {/* Deals by category */}
+      {CATEGORIES.map(cat => {
+        const catDeals = deals.filter(d => d.categorySlug === cat.id);
+        if (catDeals.length === 0) return null;
+        return (
+          <div key={cat.id} style={{ marginBottom: 56 }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 24 }}>
+              <p className="label" style={{ fontSize: '9px', color: 'var(--mid-gray)' }}>{cat.label}</p>
+              <span style={{ fontSize: 10, fontWeight: 300, color: 'var(--mid-gray)' }}>{catDeals.length} offers</span>
             </div>
-            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '20px', fontWeight: 300, fontStyle: 'italic', color: 'var(--black)', marginBottom: 12 }}>{deal.title}</h3>
-            <p style={{ fontSize: '13px', fontWeight: 300, lineHeight: 1.7, color: 'var(--dark-gray)', marginBottom: 16 }}>{deal.desc}</p>
-            <div style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
-              <span style={{ fontSize: '12px', fontWeight: 300, color: 'var(--dark-gray)' }}>{deal.terms}</span>
-              <span style={{ fontSize: '11px', fontWeight: 300, color: 'var(--mid-gray)', fontStyle: 'italic' }}>{deal.expiry}</span>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, background: 'var(--border)' }}>
+              {catDeals.map(deal => (
+                <div key={deal.id} style={{
+                  background: 'var(--white)',
+                  padding: '28px 24px',
+                  display: 'flex', flexDirection: 'column',
+                  // Exclusive = black left border accent only, no fill
+                  borderLeft: deal.exclusive ? '2px solid var(--black)' : '2px solid transparent',
+                }}>
+                  <div style={{ flex: 1 }}>
+                    {deal.exclusive && (
+                      <span style={{
+                        display: 'inline-flex', marginBottom: 12,
+                        fontSize: '9px', fontWeight: 500,
+                        letterSpacing: '0.12em', textTransform: 'uppercase',
+                        color: 'var(--black)',
+                        border: '1px solid var(--black)',
+                        padding: '3px 9px',
+                      }}>
+                        Exclusive
+                      </span>
+                    )}
+                    <p style={{
+                      fontFamily: 'var(--font-serif)', fontSize: 15, fontWeight: 300,
+                      fontStyle: 'italic', color: 'var(--black)',
+                      marginBottom: 10, lineHeight: 1.35,
+                      marginTop: deal.exclusive ? 0 : 0,
+                    }}>
+                      {deal.title}
+                    </p>
+                    <p style={{ fontSize: 12, fontWeight: 300, color: 'var(--dark-gray)', lineHeight: 1.65, marginBottom: 16 }}>
+                      {deal.description}
+                    </p>
+                    <p style={{ fontSize: 11, fontWeight: 300, color: 'var(--mid-gray)', marginBottom: 4 }}>{deal.terms}</p>
+                    <p style={{ fontSize: 10, fontStyle: 'italic', fontWeight: 300, color: 'var(--mid-gray)' }}>{deal.expiry}</p>
+                  </div>
+                  <div style={{ marginTop: 20 }}>
+                    <Link href="/membership" className="btn btn-xs" style={{
+                      background: 'transparent',
+                      color: 'var(--black)',
+                      border: '1px solid var(--black)',
+                      display: 'inline-flex',
+                    }}>
+                      {deal.tier === 'pro' ? 'Pro access' : deal.tier === 'member' ? 'View as member' : 'Access deal'}
+                    </Link>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, flexShrink: 0 }}>
-            <button className="btn btn-primary btn-sm">Request access</button>
-            <button className="btn btn-ghost btn-sm" style={{ fontSize: '10px' }}>Learn more</button>
-          </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

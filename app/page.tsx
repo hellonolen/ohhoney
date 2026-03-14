@@ -66,7 +66,7 @@ export default function LandingPage() {
         {/* Hero text */}
         <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', maxWidth: 760, padding: '0 40px' }}>
           <p className="label fade-in" style={{ color: 'rgba(255,255,255,0.6)', marginBottom: 28, letterSpacing: '0.22em' }}>
-            Executive Intelligence
+            Intelligence Feels Good
           </p>
           <h1 className="heading-1 fade-in delay-1" style={{
             color: 'var(--white)',

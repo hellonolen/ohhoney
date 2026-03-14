@@ -5,9 +5,10 @@ import { useState, useEffect } from 'react';
 
 const marketingNav = [
   { label: 'Intelligence', href: '/intelligence' },
-  { label: 'For You',      href: '/for-you' },
+  { label: 'Deals',        href: '/dashboard/deals' },
+  { label: 'Pricing',      href: '/pricing' },
+  { label: 'Intensive',    href: '/intensive' },
   { label: 'Membership',   href: '/membership' },
-  { label: 'Journal',      href: '/journal' },
 ];
 
 export default function Nav() {
@@ -60,9 +61,8 @@ export default function Nav() {
           fontFamily: 'var(--font-serif)',
           fontSize: '22px',
           fontWeight: 400,
-          letterSpacing: '0.08em',
+          letterSpacing: '0.06em',
           color: 'var(--black)',
-          textTransform: 'uppercase',
           position: 'absolute',
           left: '50%',
           transform: 'translateX(-50%)',
