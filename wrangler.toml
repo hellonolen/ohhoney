@@ -1,0 +1,22 @@
+name = "ohhoney-ai"
+main = ".open-next/worker.js"
+compatibility_date = "2025-04-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+NEXT_PUBLIC_APP_URL = "https://ohhoney.ai"
+
+# D1 — add database_id after running: wrangler d1 create ohhoney-db
+[[d1_databases]]
+binding = "DB"
+database_name = "ohhoney-db"
+database_id = "REPLACE_AFTER_D1_CREATE"
+
+# R2 — for member avatars and deal images
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "ohhoney-media"
+
+[assets]
+directory = ".open-next/assets"
+

@@ -340,3 +340,85 @@ img, video { max-width: 100%; }
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--light-gray); }
+
+/* ── SCROLL REVEAL ───────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ── MOBILE BREAKPOINTS ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Nav: hide desktop links, show hamburger */
+  .nav-desktop-left,
+  .nav-desktop-right { display: none !important; }
+  .nav-hamburger { display: flex !important; }
+
+  /* Mobile drawer is rendered from Nav component, visible by state */
+  .nav-mobile-drawer { display: flex !important; }
+
+  /* Reduce nav padding on mobile */
+  nav > div { padding: 0 20px !important; }
+
+  /* Sections */
+  .section { padding-block: var(--sp-12); }
+  .section-lg { padding-block: var(--sp-16); }
+
+  /* Container */
+  .container { padding-inline: var(--sp-5); }
+
+  /* Grids → single column on mobile */
+  .col-2,
+  .col-3,
+  .col-4 { grid-template-columns: 1fr !important; }
+
+  /* Pricing: horizontal scroll */
+  .pricing-grid {
+    display: flex !important;
+    overflow-x: auto;
+    gap: 0;
+    padding-bottom: 16px;
+    scroll-snap-type: x mandatory;
+  }
+  .pricing-col {
+    min-width: 260px;
+    scroll-snap-align: start;
+  }
+
+  /* Dashboard shell: no sidebar on mobile */
+  .sidebar { display: none; }
+  .main { margin-left: 0 !important; }
+
+  /* Dashboard topbar padding */
+  header[style*="56px"] { padding: 0 20px !important; }
+
+  /* Footer grid → stack */
+  footer [style*="grid-template-columns"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Text scaling */
+  .display { font-size: clamp(32px, 9vw, 52px); }
+  .heading-1 { font-size: clamp(28px, 7vw, 40px); }
+
+  /* Button full-width on mobile */
+  .btn-primary { padding: 16px 24px; }
+
+  /* Hero min-height */
+  section[style*="100vh"] { min-height: 90dvh !important; }
+}
+
+@media (max-width: 480px) {
+  footer [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+}

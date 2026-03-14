@@ -5,11 +5,11 @@ import Link from 'next/link';
 type Step = 'plan' | 'details' | 'payment' | 'confirm';
 
 const PLANS = {
-  trial:     { name: 'Free Trial', price: 0,    period: '3 days free' },
-  member:    { name: 'Member',     price: 97,   period: 'per month' },
-  pro:       { name: 'Pro',        price: 247,  period: 'per month' },
-  team:      { name: 'Team',       price: 497,  period: 'per month' },
-  intensive: { name: 'OhHoney Intensive', price: 1200, period: 'one-time' },
+  trial:     { name: 'Free Trial',         price: 0,    period: '3 days free',   whopPlanId: '' },
+  member:    { name: 'Member',             price: 97,   period: 'per month',     whopPlanId: '' },
+  pro:       { name: 'Pro',               price: 497,  period: 'per month',     whopPlanId: '' },
+  team:      { name: 'Team',              price: 997,  period: 'per month',     whopPlanId: '' },
+  intensive: { name: 'OhHoney Intensive', price: 1800, period: 'one-time',      whopPlanId: '' },
 };
 
 export default function CheckoutPage({ params }: { params: { plan: string } }) {
