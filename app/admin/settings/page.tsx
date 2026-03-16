@@ -20,8 +20,8 @@ export default function AdminSettingsPage() {
   });
 
   const [admins] = useState([
-    { email: 'hellonolen@gmail.com', role: 'Owner' },
-    { email: 'tracyhogan76@gmail.com', role: 'Owner' },
+    { email: 'admin@ohhoney.ai', role: 'Owner' },
+    { email: 'team@ohhoney.ai', role: 'Owner' },
   ]);
 
   function save(e: React.FormEvent) {

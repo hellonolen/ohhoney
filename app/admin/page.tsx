@@ -18,7 +18,7 @@ export default function AdminOverview() {
       {/* Owners */}
       <div style={{ marginBottom: 40, padding: '24px', background: 'var(--off-white)' }}>
         <p className="label" style={{ fontSize: '9px', color: 'var(--mid-gray)', marginBottom: 16 }}>Platform owners & administrators</p>
-        {['hellonolen@gmail.com', 'tracyhogan76@gmail.com'].map(email => (
+        {['admin@ohhoney.ai', 'team@ohhoney.ai'].map(email => (
           <div key={email} style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
             <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'var(--black)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <span style={{ fontSize: 10, color: 'var(--white)', fontWeight: 500 }}>{email[0].toUpperCase()}</span>

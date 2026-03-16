@@ -4,7 +4,7 @@ import { DEALS, CATEGORIES, type Deal } from '@/lib/deals';
 import { Plus, Eye, EyeOff, Pencil, Trash2 } from 'lucide-react';
 
 // Admin owners — only these emails should access this panel (enforced with real auth later)
-const ADMIN_OWNERS = ['hellonolen@gmail.com', 'tracyhogan76@gmail.com'];
+const ADMIN_OWNERS = ['admin@ohhoney.ai', 'team@ohhoney.ai'];
 
 const BLANK_DEAL: Omit<Deal, 'id' | 'createdAt'> = {
   category: CATEGORIES[0].label,
@@ -62,7 +62,7 @@ export default function AdminDealsPage() {
           Admin · Deal Management
         </p>
         <p style={{ fontSize: 11, fontWeight: 300, color: 'rgba(255,255,255,0.4)' }}>
-          Owners: hellonolen@gmail.com · tracyhogan76@gmail.com
+          Owners: admin@ohhoney.ai · team@ohhoney.ai
         </p>
       </div>
 
