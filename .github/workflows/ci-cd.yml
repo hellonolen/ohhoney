@@ -60,8 +60,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Next.js for Cloudflare
-        run: npm run cf:build
+      - name: Build Next.js
+        run: npm run build
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
